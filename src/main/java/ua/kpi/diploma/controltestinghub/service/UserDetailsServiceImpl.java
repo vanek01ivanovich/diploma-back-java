@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ua.kpi.diploma.controltestinghub.dao.UserDao;
 import ua.kpi.diploma.controltestinghub.model.User;
 
-@Service
+@Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserDao userDao;
