@@ -1,4 +1,4 @@
-package ua.kpi.diploma.controltestinghub.service;
+package ua.kpi.diploma.controltestinghub.service.serviceImpl;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

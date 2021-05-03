@@ -4,7 +4,7 @@ import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import ua.kpi.diploma.controltestinghub.service.UserPrincipal;
+import ua.kpi.diploma.controltestinghub.service.serviceImpl.UserPrincipal;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @Builder
-public class AuthDto {
+public class AuthenticationRequest {
     private String email;
     private String password;
 }

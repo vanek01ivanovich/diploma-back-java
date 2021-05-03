@@ -1,4 +1,4 @@
-package ua.kpi.diploma.controltestinghub.service;
+package ua.kpi.diploma.controltestinghub.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

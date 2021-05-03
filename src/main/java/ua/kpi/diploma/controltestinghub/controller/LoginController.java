@@ -6,7 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import ua.kpi.diploma.controltestinghub.config.JwtProvider;
-import ua.kpi.diploma.controltestinghub.dto.AuthDto;
+import ua.kpi.diploma.controltestinghub.dto.AuthenticationRequest;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,7 +23,7 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public void authenticate(@RequestBody AuthDto authRequest){
+    public void authenticate(@RequestBody AuthenticationRequest authRequest){
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
         String jwt = jwtProvider.generateJwtToken(authentication);
