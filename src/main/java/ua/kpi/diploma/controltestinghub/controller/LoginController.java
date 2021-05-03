@@ -1,3 +1,4 @@
+/*
 package ua.kpi.diploma.controltestinghub.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,3 +34,4 @@ public class LoginController {
 
 
 }
+*/

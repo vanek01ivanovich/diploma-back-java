@@ -17,7 +17,7 @@ import ua.kpi.diploma.controltestinghub.config.JwtProvider;
 import ua.kpi.diploma.controltestinghub.config.JwtResponse;
 import ua.kpi.diploma.controltestinghub.dto.AuthenticationRequest;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @Slf4j
 public class AuthenticationController {
@@ -41,6 +41,7 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateJwtToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.out.println(userDetails.getAuthorities());
         return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
     }
 }

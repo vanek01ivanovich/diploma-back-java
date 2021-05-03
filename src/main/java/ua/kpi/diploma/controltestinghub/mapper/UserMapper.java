@@ -15,10 +15,10 @@ public class UserMapper implements RowMapper<User> {
     public User mapRow(ResultSet resultSet, int i) throws SQLException {
         Integer id = resultSet.getInt("id");
         String email = resultSet.getString("email");
-        String name = resultSet.getString("email");
-        String surname = resultSet.getString("email");
-        String password = resultSet.getString("email");
-        String role = resultSet.getString("email");
+        String name = resultSet.getString("name");
+        String surname = resultSet.getString("surname");
+        String password = resultSet.getString("password");
+        String role = resultSet.getString("role");
         boolean isEnabled = resultSet.getBoolean("is_enabled");
 
         return User.builder()
