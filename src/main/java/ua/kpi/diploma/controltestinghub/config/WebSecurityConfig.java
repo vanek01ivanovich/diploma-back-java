@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
-
+-
 
     @Bean
     public JwtRequestFilter authenticationJwtRequestFilter(){
