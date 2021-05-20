@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 public class CompoundInstance {
 
-    private Long id;
+    private Integer id;
     private Integer priority;
     private Compound compound;
 

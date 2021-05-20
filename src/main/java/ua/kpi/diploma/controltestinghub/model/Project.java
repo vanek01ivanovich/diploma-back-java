@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Project {
 
-    private long id;
+    private Integer id;
     private String name;
     private String link;
     private boolean isArchived;
-    private long userId;
+    private Integer userId;
 
 }

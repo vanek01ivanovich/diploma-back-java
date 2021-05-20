@@ -2,12 +2,12 @@ package ua.kpi.diploma.controltestinghub.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import ua.netcracker.group3.automaticallytesting.model.User;
+import ua.kpi.diploma.controltestinghub.model.User;
 
 @Data
 @Builder
 public class ProjectDto {
-    private long id;
+    private Integer id;
     private String name;
     private String link;
     private boolean isArchived;

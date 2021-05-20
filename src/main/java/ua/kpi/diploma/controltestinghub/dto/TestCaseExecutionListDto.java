@@ -8,5 +8,5 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class TestCaseExecutionListDto {
-    String orderBy;
+    private String orderBy;
 }

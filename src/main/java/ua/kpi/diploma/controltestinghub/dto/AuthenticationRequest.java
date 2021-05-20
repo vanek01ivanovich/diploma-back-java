@@ -3,7 +3,6 @@ package ua.kpi.diploma.controltestinghub.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Setter;
 
 @Data
 @AllArgsConstructor

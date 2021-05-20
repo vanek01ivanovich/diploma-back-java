@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TestScenarioDtoWithIdNameArchived {
-    private long id;
+    private Integer id;
     private String name;
     private boolean archived;
 }

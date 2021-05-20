@@ -1,8 +1,7 @@
 package ua.kpi.diploma.controltestinghub.dto;
 
 import lombok.*;
-import ua.netcracker.group3.automaticallytesting.model.Compound;
-
+import ua.kpi.diploma.controltestinghub.model.Compound;
 import java.util.List;
 import java.util.Objects;
 

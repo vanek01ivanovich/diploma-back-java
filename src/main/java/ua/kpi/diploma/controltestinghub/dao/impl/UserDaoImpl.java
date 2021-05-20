@@ -128,6 +128,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Boolean checkIfEmailExists(String email) {
         Integer temp = jdbcTemplate.queryForObject(CHECK_IF_EMAIL_EXISTS, Integer.class, email);
-        return temp != null;
+        return temp !=null && temp != 0;
     }
 }

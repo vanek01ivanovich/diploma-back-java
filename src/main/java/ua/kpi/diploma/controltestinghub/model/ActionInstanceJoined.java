@@ -8,13 +8,13 @@ import java.util.Objects;
 @Data
 @Builder
 public class ActionInstanceJoined {
-    private Long id;
-    private Long testScenarioId;
+    private Integer id;
+    private Integer testScenarioId;
     private Integer priority;
     private Action action;
     private CompoundInstance compoundInstance;
     private Variable variable;
-    private Long variableValueId;
+    private Integer variableValueId;
 
     @Override
     public boolean equals(Object o) {

@@ -9,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class DataSet {
-    private Long id;
+    private Integer id;
     private String name;
 }

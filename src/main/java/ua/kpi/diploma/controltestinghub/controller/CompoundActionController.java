@@ -23,16 +23,16 @@ public class CompoundActionController {
 
     @GetMapping()
     public ResponseEntity<?> getCompounds(){
-
+        return null;
     }
 
     @GetMapping("/quantity")
     public ResponseEntity<?> getQuantityCompounds(){
-
+        return null;
     }
 
     @GetMapping("/{id}/actions")
     public ResponseEntity<?> getAllActionsOfCompoundByCompoundId(){
-
+        return null;
     }
 }

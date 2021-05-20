@@ -3,9 +3,9 @@ package ua.kpi.diploma.controltestinghub.dto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
-import ua.netcracker.group3.automaticallytesting.model.Action;
-import ua.netcracker.group3.automaticallytesting.model.DataEntry;
-import ua.netcracker.group3.automaticallytesting.model.Variable;
+import ua.kpi.diploma.controltestinghub.model.Action;
+import ua.kpi.diploma.controltestinghub.model.DataEntry;
+import ua.kpi.diploma.controltestinghub.model.Variable;
 
 @Builder
 @Data
@@ -15,7 +15,7 @@ public class ActionExecutionDto {
     private Action action;
     private Variable variable;
     private DataEntry dataEntry;
-    private Long testcaseId;
-    private Long testcaseExecutionId;
+    private Integer testcaseId;
+    private Integer testcaseExecutionId;
     private String status;
 }

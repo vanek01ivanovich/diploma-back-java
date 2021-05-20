@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompoundActionWithActionIdAndPriority {
-    private long actionId;
-    private long priority;
+    private Integer actionId;
+    private Integer priority;
 }

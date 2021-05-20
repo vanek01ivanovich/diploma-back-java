@@ -1,8 +1,10 @@
+/*
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import ua.kpi.diploma.controltestinghub.service.UserService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +16,8 @@ import java.util.Map;
 @Slf4j
 public class SseService {
 
-    private final UserService userService;
+    */
+/*private final UserService userService;
     private final NotificationDAO notificationDAO;
     private final TestCaseExecutionDAO testCaseExecutionDAO;
     private final TestCaseDAO testCaseDAO;
@@ -73,5 +76,7 @@ public class SseService {
         String email = jwtProvider.getUserNameFromJwtToken(jwtProvider.resolveStringToken(jwt));
         User user = userService.getUserByEmail(email);
         return notificationDAO.amountOfNotifications(user.getId());
-    }
+    }*//*
+
 }
+*/

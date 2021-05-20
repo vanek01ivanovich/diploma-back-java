@@ -1,5 +1,7 @@
 package ua.kpi.diploma.controltestinghub.service;
 
+import ua.kpi.diploma.controltestinghub.model.DataSet;
+
 import java.util.List;
 
 public interface DataSetService {
@@ -8,11 +10,11 @@ public interface DataSetService {
 
     void updateDataSet(DataSet editedDataset);
 
-    long createDataSet(String name);
+    Integer createDataSet(String name);
 
     List<DataSet> getAllDataSet();
 
     List<DataSet> getAll();
 
-    int deleteDataSet(long id);
+    int deleteDataSet(Integer id);
 }

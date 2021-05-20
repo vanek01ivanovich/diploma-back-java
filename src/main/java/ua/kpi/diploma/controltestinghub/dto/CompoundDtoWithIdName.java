@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CompoundDtoWithIdName {
-    private long id;
+    private Integer id;
     private String name;
 }

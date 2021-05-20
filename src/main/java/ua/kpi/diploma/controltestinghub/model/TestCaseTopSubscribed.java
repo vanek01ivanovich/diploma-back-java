@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TestCaseTopSubscribed {
-    private long id;
+    private Integer id;
     private String name;
-    private long projectId;
+    private Integer projectId;
     private String projectName;
-    private long quantitySubscribers;
+    private Integer quantitySubscribers;
 }

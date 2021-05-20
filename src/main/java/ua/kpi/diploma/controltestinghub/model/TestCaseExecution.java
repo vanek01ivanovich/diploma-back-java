@@ -13,12 +13,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class TestCaseExecution {
-    long id;
-    long testCaseId;
-    String status;
-    //Timestamp startDateTime;
-    String startDateTime;
-    //Timestamp endDateTime;
-    String endDateTime;
-    long userId;
+    private Integer id;
+    private Integer testCaseId;
+    private String status;
+    private String startDateTime;
+    private String endDateTime;
+    private Integer userId;
 }

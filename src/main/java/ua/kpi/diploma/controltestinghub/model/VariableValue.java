@@ -9,9 +9,9 @@ import lombok.*;
 @Builder
 @ToString
 public class VariableValue {
-    private Long id;
-    private Long actionInstanceId;
-    private Long variableId;
-    private Long dataEntryId;
-    private Long testScenarioId;
+    private Integer id;
+    private Integer actionInstanceId;
+    private Integer variableId;
+    private Integer dataEntryId;
+    private Integer testScenarioId;
 }

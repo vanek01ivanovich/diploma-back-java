@@ -1,5 +1,10 @@
 package ua.kpi.diploma.controltestinghub.service.serviceImpl;
 import org.springframework.stereotype.Service;
+import ua.kpi.diploma.controltestinghub.dto.GroupedTestCaseExecutionDto;
+import ua.kpi.diploma.controltestinghub.dto.TestCaseExecutionDto;
+import ua.kpi.diploma.controltestinghub.dto.TestCaseExecutionsCountsByStartDatesDto;
+import ua.kpi.diploma.controltestinghub.model.TestCaseExecution;
+import ua.kpi.diploma.controltestinghub.service.TestCaseExecService;
 
 
 import java.sql.Date;
@@ -9,64 +14,39 @@ import java.util.List;
 @Service
 public class TestCaseExecServiceImpl implements TestCaseExecService {
 
-    private final TestCaseExecutionDAO testCaseExecutionDAO;
-    private String whereByStatus = "";
-    private String testCaseName = "";
-    private String projectName = "";
-
-    public TestCaseExecServiceImpl(TestCaseExecutionDAO testCaseExecutionDAO) {
-        this.testCaseExecutionDAO = testCaseExecutionDAO;
-    }
 
     @Override
     public List<TestCaseExecution> getAllTestCaseExecutions() {
-        return testCaseExecutionDAO.getAllTestCaseExecutions();
+        return null;
     }
 
     @Override
     public Integer countTestCaseExecutions(String testCaseName, String projectName, String status) {
-        filterTestCase(testCaseName, projectName, status);
-        return testCaseExecutionDAO.countTestCaseExecutions(this.testCaseName, this.projectName, whereByStatus);
+        return null;
     }
 
     @Override
-    public List<TestCaseExecutionDto> getAllTestCaseExecutionWithFailedActionNumber(long limit, long offset, String orderBy, String orderByClause, String testCaseName, String projectName, String status) {
-        filterTestCase(testCaseName, projectName, status);
-        return testCaseExecutionDAO.getAllTestCaseExecutionWithFailedActionNumber(limit, offset, orderBy, orderByClause, this.testCaseName, this.projectName, status, whereByStatus);
+    public List<TestCaseExecutionDto> getAllTestCaseExecutionWithFailedActionNumber(Integer limit, Integer offset, String orderBy, String orderByClause, String testCaseName, String projectName, String status) {
+        return null;
     }
 
     @Override
-    public Long createTestCaseExecution(Long testCaseId, long userId) {
-        return testCaseExecutionDAO.createTestCaseExecution(testCaseId, userId);
+    public Long createTestCaseExecution(Integer testCaseId, Integer userId) {
+        return null;
     }
 
     @Override
-    public void updateTestCaseExecution(String status, long testCaseExecutionId) {
-        testCaseExecutionDAO.updateTestCaseExecution(status, testCaseExecutionId);
+    public void updateTestCaseExecution(String status, Integer testCaseExecutionId) {
+
     }
 
     @Override
-    public List<TestCaseExecutionsCountsByStartDatesDto> getExecutionsByDatesForLastDays(Integer daysFromToday){
-        LocalDate today = LocalDate.now();
-        LocalDate dateToCountFrom = today.minusDays(daysFromToday);
-        return testCaseExecutionDAO.getExecutionsByStartDate(Date.valueOf(dateToCountFrom), Date.valueOf(today));
+    public List<TestCaseExecutionsCountsByStartDatesDto> getExecutionsByDatesForLastDays(Integer daysFromToday) {
+        return null;
     }
 
-    /**
-     * Method needed for chart on dashboard
-     * @return list of GroupedTestCaseExecutionDto
-     */
     @Override
     public List<GroupedTestCaseExecutionDto> getGroupedTestCaseExecution() {
-        return testCaseExecutionDAO.getGroupedTestCaseExecution();
+        return null;
     }
-
-    private void filterTestCase(String testCaseName, String projectName, String status) {
-        this.testCaseName = testCaseName.equals("undefined") ?  "" :  testCaseName;
-        this.projectName = projectName.equals("undefined") ? "" : projectName;
-        if (status.equals("all")) whereByStatus = " ";
-        if (status.equals("failed")) whereByStatus = " and passed_actions < all_actions ";
-        if (status.equals("passed")) whereByStatus = " and passed_actions = all_actions ";
-    }
-
 }

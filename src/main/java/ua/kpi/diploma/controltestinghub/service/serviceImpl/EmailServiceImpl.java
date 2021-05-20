@@ -4,45 +4,41 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailSendException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.util.List;
+import ua.kpi.diploma.controltestinghub.controller.constant.MailConstant;
+import ua.kpi.diploma.controltestinghub.model.User;
+import ua.kpi.diploma.controltestinghub.util.PasswordToken;
 
 
 @Service
 @Slf4j
 @PropertySource("classpath:constants.properties")
 public class EmailServiceImpl {
+
     @Value("${user.reset.password.page}")
     String RESET_PASSWORD_LINK;
+
 
     private final JavaMailSender mailSender;
     private String color;
 
     @Autowired
-    public EmailServiceImpl(JavaMailSender mailSender){
+    public EmailServiceImpl(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
+
 
     public void sendCredentialsByEmail(User user){
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo(user.getEmail());
-        String token = new PasswordResetToken().generatePasswordResetToken(user);
+        String token = new PasswordToken().generatePasswordResetToken(user);
 
         message.setSubject(MailConstant.EMAIL_THEME);
         message.setText("To activate your account click on the following link: " +
                 RESET_PASSWORD_LINK + token);
-
         mailSender.send(message);
     }
 
@@ -50,9 +46,9 @@ public class EmailServiceImpl {
      * Method send email to users
      * @param actionExecutionList contains action executions
      * @param subscribedUsers contains subscribed users
-     * @return ResponseEntity with status
-     */
-    public ResponseEntity<?> sendReportToUser(List<ActionExecutionDto> actionExecutionList,
+     * @return ResponseEntity with status*/
+
+   /* public ResponseEntity<?> sendReportToUser(List<ActionExecutionDto> actionExecutionList,
                                            List<SubscribedUserTestCaseDto> subscribedUsers)  {
         String msg = makeHtmlEmail(subscribedUsers,actionExecutionList);
         MimeMessage message = mailSender.createMimeMessage();
@@ -75,15 +71,15 @@ public class EmailServiceImpl {
            log.error("Error with sending emails!");
         }
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
-    }
+    }*/
 
     /**
      * Method generate html email
      * @param subscribedUsers contains subscribed users
      * @param actionExecutionList contains action executions
-     * @return message string
-     */
-    private String makeHtmlEmail(List<SubscribedUserTestCaseDto> subscribedUsers,
+     * @return message string*/
+
+    /*private String makeHtmlEmail(List<SubscribedUserTestCaseDto> subscribedUsers,
                                         List<ActionExecutionDto> actionExecutionList){
         StringBuilder sb = new StringBuilder();
         sb.append("<body><h4><h3>Your test case <i style='color:green'>\"")
@@ -102,5 +98,5 @@ public class EmailServiceImpl {
         sb.append("</tbody></table></h4></body>");
         log.info("Html message was created successfully");
         return sb.toString();
-    }
+    }*/
 }

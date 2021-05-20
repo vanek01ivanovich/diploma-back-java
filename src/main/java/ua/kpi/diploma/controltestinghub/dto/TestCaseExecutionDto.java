@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TestCaseExecutionDto {
-    long id;
-    String status;
-    String startDateTime;
-    String endDateTime;
-    long userId;
-    String testCaseName;
-    String projectName;
-    long allActions;
-    long passedActions;
+    private Integer id;
+    private String status;
+    private String startDateTime;
+    private String endDateTime;
+    private Integer userId;
+    private String testCaseName;
+    private String projectName;
+    private Integer allActions;
+    private Integer passedActions;
 }

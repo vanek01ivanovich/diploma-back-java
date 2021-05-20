@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CompoundAction {
     private Integer id;
-    private Long compoundId;
-    private Long actionId;
+    private Integer compoundId;
+    private Integer actionId;
     private Integer priority;
 }

@@ -13,5 +13,5 @@ public class NotificationDto {
     private String name;
     private String status;
     private String startTime;
-    private long id;
+    private Integer id;
 }

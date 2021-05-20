@@ -1,21 +1,25 @@
 package ua.kpi.diploma.controltestinghub.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.kpi.diploma.controltestinghub.dao.UserDao;
 import ua.kpi.diploma.controltestinghub.model.User;
 import ua.kpi.diploma.controltestinghub.service.UserService;
+import ua.kpi.diploma.controltestinghub.util.PasswordToken;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
-
+    private final UserDao userDao;
+    private final PasswordEncoder passwordEncoder;
     @Autowired
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, PasswordEncoder bCryptPasswordEncoder) {
         this.userDao = userDao;
+        this.passwordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -64,7 +68,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUserPasswordByToken(String token, String password) {
-
+        PasswordToken passwordResetToken = new PasswordToken();
+        String resolvedToken = passwordResetToken.resolveToken(token);
+        String email = passwordResetToken.getEmailFromResetToken(resolvedToken);
+        userDao.updateUserPassword(email, passwordEncoder.encode(password));
     }
 
     @Override

@@ -1,8 +1,7 @@
 package ua.kpi.diploma.controltestinghub.dto;
 
 import lombok.*;
-import ua.netcracker.group3.automaticallytesting.model.VariableValue;
-
+import ua.kpi.diploma.controltestinghub.model.VariableValue;
 import java.util.List;
 
 @Getter
@@ -12,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class CreateUpdateTestCaseDto {
-    private Long id;
+    private Integer id;
     private String testCaseName;
-    private Long projectId;
-    private Long dataSetId;
-    private Long testScenarioId;
+    private Integer projectId;
+    private Integer dataSetId;
+    private Integer testScenarioId;
     private List<VariableValue> variableValues;
 }

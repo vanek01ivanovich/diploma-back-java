@@ -1,6 +1,10 @@
 package ua.kpi.diploma.controltestinghub.service;
 
 
+import ua.kpi.diploma.controltestinghub.dto.ProjectDto;
+import ua.kpi.diploma.controltestinghub.dto.ProjectListPaginationDto;
+import ua.kpi.diploma.controltestinghub.model.Project;
+
 import java.util.List;
 
 public interface ProjectService {

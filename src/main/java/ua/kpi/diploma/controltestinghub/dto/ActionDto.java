@@ -14,7 +14,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 public class ActionDto {
-    private Long actionInstanceId;
+    private Integer actionInstanceId;
     private String name;
     private List<VariableDto> variables;
 

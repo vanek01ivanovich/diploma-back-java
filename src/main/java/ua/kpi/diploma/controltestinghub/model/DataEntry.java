@@ -9,8 +9,8 @@ import lombok.*;
 @Getter
 @Setter
 public class DataEntry {
-    private Long id;
-    private Long data_set_id;
+    private Integer id;
+    private Integer data_set_id;
     private String value;
     private String key;
 }

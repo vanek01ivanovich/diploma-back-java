@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 @Builder
 public class SubscribedUserTestCaseDto {
-    private Long id;
+    private Integer id;
     private String userName;
     private String email;
-    private Long testCaseId;
+    private Integer testCaseId;
     private String testCaseName;
 }

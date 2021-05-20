@@ -1,8 +1,7 @@
 package ua.kpi.diploma.controltestinghub.dto;
 
 import lombok.*;
-import ua.netcracker.group3.automaticallytesting.model.ActionComp;
-
+import ua.kpi.diploma.controltestinghub.model.ActionCompound;
 import java.util.List;
 
 @Data
@@ -14,6 +13,6 @@ public class CompoundDto {
     long id;
     String name;
     String description;
-    List<ActionComp> actionList;
+    List<ActionCompound> actionList;
 
 }

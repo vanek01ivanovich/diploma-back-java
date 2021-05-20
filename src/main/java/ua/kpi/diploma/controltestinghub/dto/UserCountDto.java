@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UserCountDto {
-    private Long userCount;
-    private Long adminCount;
-    private Long engineerCount;
-    private Long managerCount;
+    private Integer userCount;
+    private Integer adminCount;
+    private Integer engineerCount;
+    private Integer managerCount;
 
 }

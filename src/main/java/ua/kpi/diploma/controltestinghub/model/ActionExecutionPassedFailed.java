@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ActionExecutionPassedFailed {
-    long quantity;
-    String date;
+    private Integer quantity;
+    private String date;
 }

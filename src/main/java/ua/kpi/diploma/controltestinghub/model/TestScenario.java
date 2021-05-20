@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TestScenario {
 
-    private long id;
+    private Integer id;
     private String name;
     private boolean isArchived;
 
-    public TestScenario(long id, String name) {
+    public TestScenario(Integer id, String name) {
         this.id = id;
         this.name = name;
     }

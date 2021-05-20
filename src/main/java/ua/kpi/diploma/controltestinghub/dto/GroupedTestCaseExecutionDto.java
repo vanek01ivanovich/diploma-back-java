@@ -8,7 +8,7 @@ import lombok.ToString;
 @Builder
 @ToString
 public class GroupedTestCaseExecutionDto {
-    private Long testCaseId;
+    private Integer testCaseId;
     private String testCaseName;
     private Integer numberOfTestCaseExecution;
 }

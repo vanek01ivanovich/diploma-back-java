@@ -1,6 +1,8 @@
 package ua.kpi.diploma.controltestinghub.service;
 
 
+import ua.kpi.diploma.controltestinghub.model.DataEntry;
+
 import java.util.List;
 
 public interface DataEntryService {
@@ -14,5 +16,5 @@ public interface DataEntryService {
 
     List<DataEntry> getAllByDataSetId(Long dataSetId);
 
-    void deleteDataEntry(long dataSetId);
+    void deleteDataEntry(Integer dataSetId);
 }

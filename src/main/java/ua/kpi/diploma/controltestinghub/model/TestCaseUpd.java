@@ -8,6 +8,6 @@ import lombok.*;
 @Builder
 @ToString
 public class TestCaseUpd {
-    private Long id;
+    private Integer id;
     private String name;
 }

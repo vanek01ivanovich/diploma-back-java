@@ -10,9 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TestScenarioItemDto {
-    private long id;
+    private Integer id;
     private String type;
-    private long priority;
+    private Integer priority;
     private String contextInstanceName;
     private List<TestScenarioItemDto> items;
 

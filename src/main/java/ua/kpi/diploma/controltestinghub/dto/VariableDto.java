@@ -1,8 +1,7 @@
 package ua.kpi.diploma.controltestinghub.dto;
 
 import lombok.*;
-import ua.netcracker.group3.automaticallytesting.model.DataEntry;
-
+import ua.kpi.diploma.controltestinghub.model.DataEntry;
 import java.util.Objects;
 
 @Getter
@@ -12,13 +11,13 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 public class VariableDto {
-    private Long id;
+    private Integer id;
     private String name;
     /**
      * is null for test scenario
      */
     private DataEntry dataEntry;
-    private Long variableValueId;
+    private Integer variableValueId;
 
     @Override
     public boolean equals(Object o) {
