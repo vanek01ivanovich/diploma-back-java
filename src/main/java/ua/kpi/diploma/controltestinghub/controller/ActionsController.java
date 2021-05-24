@@ -71,7 +71,7 @@ public class ActionsController {
     @PostMapping("create-action/{name}/{description}")
     public void createAction(@PathVariable("name") String name, @PathVariable("description") String description,
                              @RequestBody List<String> variableValues) {
-        long id = actionService.createAction(name, description);
+        Integer id = actionService.createAction(name, description);
         this.variableService.createVariables(id, variableValues);
     }
 
@@ -90,7 +90,7 @@ public class ActionsController {
      * @return list of ActionVariableDto
      */
     @GetMapping("/action/view-edit/{id}")
-    public List<ActionVariableDto> getActionVariableById(@PathVariable Long id){
+    public List<ActionVariableDto> getActionVariableById(@PathVariable Integer id){
         return actionService.getActionVariableById(id);
     }
 
@@ -100,7 +100,7 @@ public class ActionsController {
      * @param action updated action
      */
     @PutMapping("/action/view-edit/update/{id}")
-    public void updateActionDescriptionById(@PathVariable Long id, @RequestBody Action action){
+    public void updateActionDescriptionById(@PathVariable Integer id, @RequestBody Action action){
         log.info("Action for update: {}",action);
         actionService.updateActionDescription(id,action);
     }

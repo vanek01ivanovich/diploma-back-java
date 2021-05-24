@@ -2,7 +2,9 @@ package ua.kpi.diploma.controltestinghub.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import ua.kpi.diploma.controltestinghub.dto.TestCaseDto;
 import ua.kpi.diploma.controltestinghub.dto.TestCaseExecutionDto;
+import ua.kpi.diploma.controltestinghub.execution.TestCaseExecutionService;
 import ua.kpi.diploma.controltestinghub.model.TestCaseExecution;
 import ua.kpi.diploma.controltestinghub.service.NotificationService;
 import ua.kpi.diploma.controltestinghub.service.TestCaseExecService;
@@ -12,6 +14,8 @@ import ua.kpi.diploma.controltestinghub.util.Pageable;
 
 import java.util.List;
 
+import static ua.kpi.diploma.controltestinghub.model.TestCaseExecutionStatus.FINISHED;
+
 @Slf4j
 @RestController
 @CrossOrigin(origins = "*")
@@ -19,17 +23,17 @@ import java.util.List;
 public class TestCaseExecutionController {
     private final TestCaseExecService testCaseExecService;
     private final TestCaseService testCaseService;
-    //private final TestCaseExecutionService testCaseExecutionService;
+    private final TestCaseExecutionService testCaseExecutionService;
     private final UserService userService;
     private final NotificationService notificationService;
     //private final SseService sseService;
 
-    public TestCaseExecutionController(TestCaseExecService testCaseExecService,TestCaseService testCaseService,
-                                      /* TestCaseExecutionService testCaseExecutionService,*/ UserService userService,
+    public TestCaseExecutionController(TestCaseExecService testCaseExecService, TestCaseService testCaseService,
+                                       TestCaseExecutionService testCaseExecutionService, UserService userService,
                                        NotificationService notificationService /*,SseService sseService*/) {
         this.testCaseExecService = testCaseExecService;
         this.testCaseService = testCaseService;
-        //this.testCaseExecutionService = testCaseExecutionService;
+        this.testCaseExecutionService = testCaseExecutionService;
         this.userService = userService;
         this.notificationService = notificationService;
         //this.sseService = sseService;
@@ -77,24 +81,24 @@ public class TestCaseExecutionController {
      * @param userEmail user email
      */
     @PostMapping("/execute/{testCaseId}")
-    public void createTestCaseExecution(@PathVariable("testCaseId") Long testCaseId,
+    public void createTestCaseExecution(@PathVariable("testCaseId") Integer testCaseId,
                                         @RequestBody String userEmail) {
-        //long userId = userService.getUserIdByEmail(userEmail);
-        //long testCaseExecutionId = testCaseExecService.createTestCaseExecution(testCaseId, userId);
-       /* notificationService.addNotifications(testCaseId, testCaseExecutionId);
-        executeTestCase(testCaseId, testCaseExecutionId);*/
+        Integer userId = userService.getUserIdByEmail(userEmail);
+        Integer testCaseExecutionId = testCaseExecService.createTestCaseExecution(testCaseId, userId);
+        //notificationService.addNotifications(testCaseId, testCaseExecutionId);
+        executeTestCase(testCaseId, testCaseExecutionId);
     }
 
     /**
      * @param testCaseId test case id
      * @param testCaseExecutionId test case executions id
      */
-    private void executeTestCase(long testCaseId, long testCaseExecutionId) {
-        /*TestCaseDto testCaseDto =  testCaseService.getTestCase(testCaseId);
+    private void executeTestCase(Integer testCaseId, Integer testCaseExecutionId) {
+        TestCaseDto testCaseDto =  testCaseService.getTestCase(testCaseId);
         List<String> status = testCaseExecutionService.executeTestCase(testCaseDto, testCaseExecutionId);
         log.error("Number of error action executions: {}",status.stream().filter(el -> el.equals("FAILED")).count());
         testCaseExecService.updateTestCaseExecution(String.valueOf(FINISHED), testCaseExecutionId);
-        sseService.sendRecentNotifications(testCaseDto.getTestCase().getId(), testCaseExecutionId);*/
+        //sseService.sendRecentNotifications(testCaseDto.getTestCase().getId(), testCaseExecutionId);
     }
 
 }

@@ -44,7 +44,7 @@ public class ActionExecutionController {
      * @return list of ActionExecutionDto with pagination
      */
     @GetMapping("/{testCaseExecutionId}")
-    public List<ActionExecutionDto> getAllActionExecutions(@PathVariable Long testCaseExecutionId,
+    public List<ActionExecutionDto> getAllActionExecutions(@PathVariable Integer testCaseExecutionId,
                                                            Integer page, String orderSearch,
                                                            String orderSort, Integer pageSize, String search,
                                                            @RequestHeader("Authorization") String jwt){
@@ -56,8 +56,7 @@ public class ActionExecutionController {
         Pageable pageable = Pageable.builder().page(page).pageSize(pageSize).sortField(orderSearch)
                                                        .sortOrder(orderSort).search(search).build();
         log.info("Pageable : {}", pageable);
-        //return actionExecutionService.getAllActionExecutions(testCaseExecutionId,pageable);
-        return null;
+        return actionExecutionService.getAllActionExecutions(testCaseExecutionId,pageable);
     }
 
     /**

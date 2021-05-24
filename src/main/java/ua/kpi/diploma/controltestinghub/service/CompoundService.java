@@ -5,14 +5,15 @@ import ua.kpi.diploma.controltestinghub.dto.ActionDtoWithIdNameVoid;
 import ua.kpi.diploma.controltestinghub.dto.CompoundDto;
 import ua.kpi.diploma.controltestinghub.dto.CompoundDtoWithIdName;
 import ua.kpi.diploma.controltestinghub.model.Compound;
+import ua.kpi.diploma.controltestinghub.util.Pageable;
 
 import java.util.List;
 
 public interface CompoundService {
 
-    Integer getNumberOfCompounds(String search);
+    Integer getQuantityCompounds(String search);
 
-    List<Compound> getAllCompounds();
+    List<Compound> getAllCompounds(Pageable pageable);
 
     List<CompoundDtoWithIdName> getAllCompoundsWithIdName();
 

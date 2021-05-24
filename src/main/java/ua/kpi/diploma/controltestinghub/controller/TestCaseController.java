@@ -89,7 +89,7 @@ public class TestCaseController {
 
 
     @GetMapping("/{projectID}/pages/count")
-    public Integer countTestCasePages(Integer pageSize, @PathVariable("projectID") Long projectId) {
+    public Integer countTestCasePages(Integer pageSize, @PathVariable("projectID") Integer projectId) {
         return testCaseService.countTestCasesByProject(pageSize, projectId  );
     }
 

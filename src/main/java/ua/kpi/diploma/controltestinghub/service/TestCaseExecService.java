@@ -16,7 +16,7 @@ public interface TestCaseExecService {
 
     List<TestCaseExecutionDto> getAllTestCaseExecutionWithFailedActionNumber(Integer limit, Integer offset, String orderBy, String orderByClause, String testCaseName, String projectName, String status);
 
-    Long createTestCaseExecution(Integer testCaseId, Integer userId);
+    Integer createTestCaseExecution(Integer testCaseId, Integer userId);
 
     void updateTestCaseExecution(String status, Integer testCaseExecutionId);
 

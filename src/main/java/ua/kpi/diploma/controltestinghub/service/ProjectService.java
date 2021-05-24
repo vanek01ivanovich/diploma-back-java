@@ -11,9 +11,9 @@ public interface ProjectService {
 
     List<Project> getAllProjects(ProjectListPaginationDto pagination);
 
-    Project getProjectById(Long id);
+    Project getProjectById(Integer id);
 
-    ProjectDto getProjectDtoById(Long id);
+    ProjectDto getProjectDtoById(Integer id);
 
     Integer countPages(ProjectListPaginationDto pagination, Integer pageSize);
 
@@ -21,7 +21,7 @@ public interface ProjectService {
 
     void updateProject(Project project);
 
-    void archiveProject(Long projectId);
+    void archiveProject(Integer projectId);
 
-    void unarchiveProject(Long projectId);
+    void unarchiveProject(Integer projectId);
 }

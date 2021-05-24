@@ -19,7 +19,7 @@ public interface ActionService {
 
     Integer createAction(String name, String description);
 
-    List<ActionVariableDto> getActionVariableById(Long id);
+    List<ActionVariableDto> getActionVariableById(Integer id);
 
-    void updateActionDescription(Long id, Action action);
+    void updateActionDescription(Integer id, Action action);
 }

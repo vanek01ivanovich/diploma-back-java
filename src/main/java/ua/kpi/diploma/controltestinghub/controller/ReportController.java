@@ -28,7 +28,7 @@ public class ReportController {
      * @return ResponseEntity with status OK if report was send successfully
      */
     @PostMapping("/send/report/{testCaseExecutionId}")
-    public ResponseEntity<?> sendReport(@PathVariable Long testCaseExecutionId,
+    public ResponseEntity<?> sendReport(@PathVariable Integer testCaseExecutionId,
                                         @RequestBody List<ActionExecutionDto> actionExecutionList){
         List<SubscribedUserTestCaseDto> subscribedUsers = reportService.getSubscribedUsers(testCaseExecutionId);
         if (subscribedUsers.size() >= 1) {

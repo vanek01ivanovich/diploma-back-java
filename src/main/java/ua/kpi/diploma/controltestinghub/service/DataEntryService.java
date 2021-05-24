@@ -12,9 +12,9 @@ public interface DataEntryService {
 
     void deleteDataEntryValueById(Integer dataEntryId);
 
-    void createDataEntry(Long dataSetId, List<DataEntry> dataSetValues);
+    void createDataEntry(Integer dataSetId, List<DataEntry> dataSetValues);
 
-    List<DataEntry> getAllByDataSetId(Long dataSetId);
+    List<DataEntry> getAllByDataSetId(Integer dataSetId);
 
     void deleteDataEntry(Integer dataSetId);
 }

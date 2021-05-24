@@ -40,7 +40,8 @@ public class ActionInstanceDaoImpl implements ActionInstanceDao {
     }
 
     @Override
-    public void saveActionInstancesWithoutCompoundInstanceId(List<TestScenarioItemDto> actions, Integer testScenarioId) {
+    public void saveActionInstancesWithoutCompoundInstanceId(List<TestScenarioItemDto> actions,
+                                                             Integer testScenarioId) {
         jdbcTemplate.batchUpdate(
                 INSERT_ALL_WITHOUT_COMPOUND_INSTANCE_ID,
                 actions,

@@ -25,7 +25,7 @@ public interface TestCaseService {
 
     List<TestCaseUpd> getAllTestCases();
 
-    Integer countTestCasesByProject(Integer pageSize, Long projectId);
+    Integer countTestCasesByProject(Integer pageSize, Integer projectId);
 
     List<TestCaseTopSubscribed> getFiveTopSubscribedTestCases();
 

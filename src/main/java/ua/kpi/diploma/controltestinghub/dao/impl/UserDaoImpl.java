@@ -7,12 +7,15 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ua.kpi.diploma.controltestinghub.dao.UserDao;
+import ua.kpi.diploma.controltestinghub.dto.UserCountDto;
+import ua.kpi.diploma.controltestinghub.mapper.UserCountMapper;
 import ua.kpi.diploma.controltestinghub.mapper.UserMapper;
 import ua.kpi.diploma.controltestinghub.mapper.UserMapperNoPassword;
 import ua.kpi.diploma.controltestinghub.model.User;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @PropertySource("classpath:queriesDB/queries.properties")
 @Repository
@@ -21,6 +24,8 @@ public class UserDaoImpl implements UserDao {
     private final JdbcTemplate jdbcTemplate;
     private final UserMapper userMapper;
     private final UserMapperNoPassword userMapperNoPassword;
+    private final UserCountMapper userCountMapper;
+
 
     @Value("${find.user.by.email.with.password}")
     private String FIND_USER_BY_EMAIL;
@@ -50,14 +55,16 @@ public class UserDaoImpl implements UserDao {
     private String COUNT_BY_ROLE;
     @Value("${check.if.user.email.exists}")
     private String CHECK_IF_EMAIL_EXISTS;
+    @Value("${get.user.count}")
+    private String COUNT_USERS_BY_ROLE;
 
     @Autowired
-    public UserDaoImpl(JdbcTemplate jdbcTemplate,UserMapper userMapper,UserMapperNoPassword userMapperNoPassword) {
+    public UserDaoImpl(JdbcTemplate jdbcTemplate, UserMapper userMapper, UserMapperNoPassword userMapperNoPassword, UserCountMapper userCountMapper) {
         this.jdbcTemplate = jdbcTemplate;
         this.userMapper = userMapper;
         this.userMapperNoPassword = userMapperNoPassword;
+        this.userCountMapper = userCountMapper;
     }
-
 
     @Override
     public User findUserByEmail(String email) {
@@ -65,8 +72,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String getEmail(Long id) {
-        return null;
+    public String getEmail(Integer id) {
+        return jdbcTemplate.queryForObject(GET_USER_EMAIL_BY_ID, String.class, id);
     }
 
     @Override
@@ -91,8 +98,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getUsersPageSorted(String orderByLimitOffsetWithValues, String isEnabledFiltering, User user) {
-        return null;
+    public List<User> getUsersPageSorted(String orderByLimitOffsetWithValues, String isEnabledFiltering, String name, String surname, String email, String roles) {
+        return jdbcTemplate.queryForStream(GET_USERS + isEnabledFiltering + orderByLimitOffsetWithValues,
+                userMapperNoPassword, name, surname, email, roles)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -121,8 +130,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Integer countUsersSearch(String enabledSql, String name, String surname, String email, String formFilter) {
-        return null;
+    public Integer countUsersSearch(String enabledSql, String name, String surname, String email, String roles) {
+        return jdbcTemplate.queryForObject(COUNT_USERS_SEARCH + enabledSql, Integer.class, name, surname, email, roles);
+    }
+
+    @Override
+    public UserCountDto countOfUsersByRole() {
+        return jdbcTemplate.queryForObject(COUNT_USERS_BY_ROLE, userCountMapper);
     }
 
     @Override

@@ -4,12 +4,23 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSendException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import ua.kpi.diploma.controltestinghub.controller.constant.MailConstant;
+import ua.kpi.diploma.controltestinghub.dto.ActionExecutionDto;
+import ua.kpi.diploma.controltestinghub.dto.SubscribedUserTestCaseDto;
 import ua.kpi.diploma.controltestinghub.model.User;
 import ua.kpi.diploma.controltestinghub.util.PasswordToken;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.util.List;
 
 
 @Service
@@ -48,8 +59,8 @@ public class EmailServiceImpl {
      * @param subscribedUsers contains subscribed users
      * @return ResponseEntity with status*/
 
-   /* public ResponseEntity<?> sendReportToUser(List<ActionExecutionDto> actionExecutionList,
-                                           List<SubscribedUserTestCaseDto> subscribedUsers)  {
+    public ResponseEntity<?> sendReportToUser(List<ActionExecutionDto> actionExecutionList,
+                                              List<SubscribedUserTestCaseDto> subscribedUsers)  {
         String msg = makeHtmlEmail(subscribedUsers,actionExecutionList);
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper;
@@ -71,7 +82,7 @@ public class EmailServiceImpl {
            log.error("Error with sending emails!");
         }
         return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
-    }*/
+    }
 
     /**
      * Method generate html email
@@ -79,7 +90,7 @@ public class EmailServiceImpl {
      * @param actionExecutionList contains action executions
      * @return message string*/
 
-    /*private String makeHtmlEmail(List<SubscribedUserTestCaseDto> subscribedUsers,
+    private String makeHtmlEmail(List<SubscribedUserTestCaseDto> subscribedUsers,
                                         List<ActionExecutionDto> actionExecutionList){
         StringBuilder sb = new StringBuilder();
         sb.append("<body><h4><h3>Your test case <i style='color:green'>\"")
@@ -98,5 +109,5 @@ public class EmailServiceImpl {
         sb.append("</tbody></table></h4></body>");
         log.info("Html message was created successfully");
         return sb.toString();
-    }*/
+    }
 }

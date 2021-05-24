@@ -3,6 +3,8 @@ package ua.kpi.diploma.controltestinghub.dao.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import ua.kpi.diploma.controltestinghub.dao.ActionDao;
 import ua.kpi.diploma.controltestinghub.dto.ActionDtoWithIdNameVoid;
@@ -12,6 +14,8 @@ import ua.kpi.diploma.controltestinghub.mapper.ActionVariableMapper;
 import ua.kpi.diploma.controltestinghub.mapper.ActionWithIdNameVoidMapper;
 import ua.kpi.diploma.controltestinghub.model.Action;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,8 +77,16 @@ public class ActionDaoImpl implements ActionDao {
     }
 
     @Override
-    public long createAction(String name, String description) {
-        return 0;
+    public Integer createAction(String name, String description) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        String sql = "insert into action (name, description, is_void) values (?, ?, true) returning id";
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, name);
+            ps.setString(2, description);
+            return ps;
+        }, keyHolder);
+        return keyHolder.getKey().intValue();
     }
 
     @Override
@@ -84,6 +96,7 @@ public class ActionDaoImpl implements ActionDao {
 
     @Override
     public List<ActionVariableDto> getActionVariable(Integer id) {
+        System.out.println("action id " + id);
         return jdbcTemplate.queryForStream(GET_ACTION_VARIABLE_BY_ID,actionVariableMapper,id).collect(Collectors.toList());
     }
 

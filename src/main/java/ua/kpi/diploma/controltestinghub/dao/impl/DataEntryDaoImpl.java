@@ -86,7 +86,7 @@ public class DataEntryDaoImpl implements DataEntryDao {
 
 
     @Override
-    public void createDataEntry(Long dataSetId, List<DataEntry> dataSetValues) {
+    public void createDataEntry(Integer dataSetId, List<DataEntry> dataSetValues) {
         String sql = "insert into data_entry (data_set_id, value, key) values (?, ?, ?)";
         jdbcTemplate.batchUpdate(sql, dataSetValues, dataSetValues.size(), (ps, dataSetValue) -> {
             ps.setLong(1, dataSetId);

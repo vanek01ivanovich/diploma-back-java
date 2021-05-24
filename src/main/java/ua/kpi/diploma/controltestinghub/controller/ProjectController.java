@@ -47,7 +47,7 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}")
-    public ProjectDto getProject(@PathVariable("id") Long id){
+    public ProjectDto getProject(@PathVariable("id") Integer id){
         return projectService.getProjectDtoById(id);
 
     }
@@ -66,12 +66,12 @@ public class ProjectController {
     }
 
     @PatchMapping("/{id}/archive")
-    public void archiveProject(@PathVariable("id") Long projectId){
+    public void archiveProject(@PathVariable("id") Integer projectId){
         projectService.archiveProject(projectId);
     }
 
     @PatchMapping("/{id}/unarchive")
-    public void unarchiveProject(@PathVariable("id") Long projectId){
+    public void unarchiveProject(@PathVariable("id") Integer projectId){
         projectService.unarchiveProject(projectId);
     }
 

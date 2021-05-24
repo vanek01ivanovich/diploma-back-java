@@ -1,6 +1,9 @@
 package ua.kpi.diploma.controltestinghub.service;
 
+import ua.kpi.diploma.controltestinghub.dto.UserSearchDto;
+import ua.kpi.diploma.controltestinghub.exception.ValidationException;
 import ua.kpi.diploma.controltestinghub.model.User;
+import ua.kpi.diploma.controltestinghub.util.Pageable;
 
 import java.util.List;
 
@@ -13,7 +16,7 @@ public interface UserService {
 
     Integer countPages(Integer pageSize);
 
-    List<User> getUsers();
+    List<User> getUsers(UserSearchDto userSearchDto, Pageable pageable) throws ValidationException;
 
     User getUserById(Integer id);
 
@@ -25,7 +28,7 @@ public interface UserService {
 
     void updateUserPassword(User user);
 
-    Integer countPagesSearch();
+    Integer countPagesSearch(UserSearchDto userSearchDto, Integer pageSize);
 
     Boolean checkIfEmailExists(String email);
 }
