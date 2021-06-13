@@ -14,7 +14,7 @@ import ua.kpi.diploma.controltestinghub.service.TestCaseService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://control-testing-hub-java.herokuapp.com")
 @RequestMapping("/dashboard")
 public class DashboardController {
     private final TestCaseService testCaseService;
