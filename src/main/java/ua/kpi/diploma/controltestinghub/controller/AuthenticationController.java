@@ -17,7 +17,7 @@ import ua.kpi.diploma.controltestinghub.config.JwtProvider;
 import ua.kpi.diploma.controltestinghub.config.JwtResponse;
 import ua.kpi.diploma.controltestinghub.dto.AuthenticationRequest;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://control-testing-hub-angular.herokuapp.com")
 @RestController
 @Slf4j
 public class AuthenticationController {
