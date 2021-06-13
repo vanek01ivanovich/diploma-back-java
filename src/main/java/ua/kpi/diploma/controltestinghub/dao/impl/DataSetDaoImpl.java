@@ -55,6 +55,7 @@ public class DataSetDaoImpl implements DataSetDao {
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(CREATE_DATA_SET, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
+            ps.setBoolean(2, false);
             return ps;
         }, keyHolder);
         return Objects.requireNonNull(keyHolder.getKey()).intValue();

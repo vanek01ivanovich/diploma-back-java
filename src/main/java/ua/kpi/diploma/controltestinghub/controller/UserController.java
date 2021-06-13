@@ -6,9 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import ua.kpi.diploma.controltestinghub.dto.UserSearchDto;
+import ua.kpi.diploma.controltestinghub.exception.ValidationException;
 import ua.kpi.diploma.controltestinghub.model.User;
 import ua.kpi.diploma.controltestinghub.service.serviceImpl.EmailServiceImpl;
 import ua.kpi.diploma.controltestinghub.service.serviceImpl.UserServiceImpl;
+import ua.kpi.diploma.controltestinghub.util.Pageable;
 
 import java.util.List;
 
@@ -31,8 +34,8 @@ public class UserController {
     }
 
     @GetMapping()
-    public List<User> getPageUsers(){
-        return null;
+    public List<User> getPageUsers(UserSearchDto userSearchDto, Pageable pageable) throws ValidationException {
+        return userService.getUsers(userSearchDto, pageable);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
@@ -64,11 +67,10 @@ public class UserController {
         return userService.checkIfEmailExists(email);
     }
 
-    /*@GetMapping("/pages/count-search")
+    @GetMapping("/pages/count-search")
     public Integer countUserPagesSearch(UserSearchDto userSearchDto, Integer pageSize) {
         return userService.countPagesSearch(userSearchDto, pageSize);
-    }*/
-
+    }
 
 
 

@@ -55,14 +55,15 @@ public class TestCaseExecutionServiceSelenium implements TestCaseExecutionServic
         actionExecutions = new ArrayList<>();
         actionStatus = Status.PASSED;
 
-        System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
-        //ChromeOptions options = new ChromeOptions();
-        /*options.addArguments("--disable-gpu");
+        /*System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();*/
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
-        options.addArguments("--lang=en");*/
-        WebDriver driver = new ChromeDriver();
+        options.addArguments("--lang=en");
+        WebDriver driver = new ChromeDriver(options);
 
         log.info("Test case execution started");
         driver.get(testCaseDto.getProjectLink());
@@ -90,7 +91,7 @@ public class TestCaseExecutionServiceSelenium implements TestCaseExecutionServic
      * @param testCaseExecutionId needed for execute action
      */
     private void executeScenarioAction(ActionDto actionDto, WebDriver driver, Integer testCaseExecutionId){
-        System.out.println("ActionDto = " + actionDto);
+        System.out.println("Action DTO = " + actionDto.toString());
         if (actionStatus == Status.PASSED) {
             actions.get(actionDto.getName())
                     .executeAction(driver, variableDtosToVariableValues(actionDto.getVariables()))
@@ -98,6 +99,11 @@ public class TestCaseExecutionServiceSelenium implements TestCaseExecutionServic
                         actionStatus = status;
                         log.info("Action STATUS of {} is {}",actionDto.getName(),status);
                         fillActionExecution(testCaseExecutionId,actionDto,status,contextVariable);});
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }else{
             fillActionExecution(testCaseExecutionId,actionDto,Status.NOTSTARTED,Optional.empty());
         }

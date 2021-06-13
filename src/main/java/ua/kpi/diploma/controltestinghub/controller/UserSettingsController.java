@@ -44,6 +44,6 @@ public class UserSettingsController {
     }
     @PostMapping("/reset-by-email")
     public void resetPassByEmail(@RequestBody User user){
-        //emailService.sendCredentialsByEmail(user);
+        emailService.sendCredentialsByEmail(user);
     }
 }

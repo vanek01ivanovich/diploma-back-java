@@ -101,6 +101,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer countPagesSearch(UserSearchDto userSearchDto, Integer pageSize) {
+        System.out.println(userSearchDto.toString());
         return pagination.countPages(userDao.countUsersSearch(
                 userSearchDto.getOnlyEnabled() ? " and is_enabled=true" : "",
                 userSearchDto.getName(),

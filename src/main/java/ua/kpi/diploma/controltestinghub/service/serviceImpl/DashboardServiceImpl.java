@@ -1,4 +1,5 @@
 package ua.kpi.diploma.controltestinghub.service.serviceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.kpi.diploma.controltestinghub.dao.UserDao;
 import ua.kpi.diploma.controltestinghub.dto.UserCountDto;
@@ -10,7 +11,8 @@ import java.util.List;
 public class DashboardServiceImpl implements DashboardService{
     UserDao userDao;
 
-    public DashboardServiceImpl(UserDao userDAO) {
+    @Autowired
+    public DashboardServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 

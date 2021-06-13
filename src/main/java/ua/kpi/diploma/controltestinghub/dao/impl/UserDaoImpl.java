@@ -99,6 +99,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getUsersPageSorted(String orderByLimitOffsetWithValues, String isEnabledFiltering, String name, String surname, String email, String roles) {
+        System.out.println("orderByLimitOffsetWithValues " + orderByLimitOffsetWithValues);
+        System.out.println("isEnabledFiltering " + isEnabledFiltering);
+        System.out.println("name " + name);
+        System.out.println("surname " + surname);
+        System.out.println("email " + email);
+        System.out.println("roles " + roles);
         return jdbcTemplate.queryForStream(GET_USERS + isEnabledFiltering + orderByLimitOffsetWithValues,
                 userMapperNoPassword, name, surname, email, roles)
                 .collect(Collectors.toList());

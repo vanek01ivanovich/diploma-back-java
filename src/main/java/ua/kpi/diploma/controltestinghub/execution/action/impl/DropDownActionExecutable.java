@@ -28,6 +28,7 @@ public class DropDownActionExecutable implements ActionExecutable {
         final String MENU_ELEMENT = "menu element xpath";
         Status actionExecution;
         try {
+            driver.findElement(By.xpath(variableValues.get(MENU))).click();
             Actions actions = new Actions(driver);
             actions.moveToElement(driver.findElement(By.xpath(variableValues.get(MENU))));
             Action moveTo = actions.build();
